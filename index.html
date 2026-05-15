@@ -10,58 +10,30 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="hero">
       <canvas id="webgl"></canvas>
+      <div class="overlay"></div>
 
-      <div class="fx-overlay"></div>
-      <div class="scanlines"></div>
-
-      <div class="hero-ui">
+      <div class="hero-content">
         <p class="eyebrow">AUTOSALLON KOSOVA · PRISHTINË</p>
         <h1>Porsche 911 GT3</h1>
-        <p class="sub">
-          Një eksperiencë futuristike me scroll-parallax, drita neon dhe prezantim cinematic.
-        </p>
-        <a href="#details" class="cta">Shiko Detajet</a>
+        <p>Scroll për një eksperiencë futuristike me WebGL + GSAP parallax.</p>
+        <a href="#about" class="cta">Shiko më shumë</a>
       </div>
 
       <div id="loader" class="loader">Loading 3D model...</div>
-      <div class="scroll-hint">SCROLL ↓</div>
     </header>
 
     <main>
-      <section id="details" class="section">
-        <h2>Hyper Performance Experience</h2>
-        <p>
-          Ky hero është i sinkronizuar me scroll: kamera, vetura dhe ambienti lëvizin në kohë reale
-          për një ndjesi premium “next-gen”.
-        </p>
-      </section>
-
-      <section class="section split">
-        <article>
-          <h3>WebGL + Three.js</h3>
-          <p>
-            Renderim 3D me ndriçim cinematic, particles dhe neon-rings për depth futuristik.
-          </p>
-        </article>
-        <article>
-          <h3>GSAP ScrollTrigger</h3>
-          <p>
-            Timeline cinematic që reagon me scroll për motion smooth dhe immersive.
-          </p>
-        </article>
-      </section>
-
-      <section class="section center">
-        <h2>AutoSallon KS</h2>
-        <p>Ready për versionin final me branding, logo, ngjyra dhe content të biznesit tand.</p>
+      <section id="about" class="section">
+        <h2>Next-Level Showcase</h2>
+        <p>Modeli 3D lëviz me scroll, me ambient neon dhe animacione cinematic.</p>
       </section>
     </main>
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
