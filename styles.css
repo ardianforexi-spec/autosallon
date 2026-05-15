@@ -1,166 +1,87 @@
 :root {
-  --bg-1: #04050f;
-  --bg-2: #080d1f;
+  --bg: #050816;
   --text: #ecf2ff;
-  --muted: #9eb0d5;
-  --neon-cyan: #4de2ff;
-  --neon-purple: #9b5cff;
-  --neon-pink: #ff5ea8;
+  --muted: #9fb2dd;
+  --c1: #57e7ff;
+  --c2: #9b5cff;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
+* { box-sizing: border-box; }
+html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  background: radial-gradient(circle at 50% 10%, #121831 0%, var(--bg-1) 35%, #020307 100%);
+  background: radial-gradient(circle at 50% 20%, #121932, #04060f 60%);
   color: var(--text);
   font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-.hero {
-  position: relative;
-  height: 260vh;
-}
-
+.hero { position: relative; height: 220vh; }
 #webgl {
   position: sticky;
   top: 0;
   width: 100%;
   height: 100vh;
   display: block;
-  z-index: 1;
 }
 
-.fx-overlay {
+.overlay {
   position: fixed;
   inset: 0;
-  z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 20%, rgba(77, 226, 255, 0.22), transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(155, 92, 255, 0.2), transparent 45%),
-    radial-gradient(circle at 50% 50%, transparent 40%, rgba(255, 94, 168, 0.07) 100%);
+    radial-gradient(circle at 20% 20%, rgba(87,231,255,0.25), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(155,92,255,0.2), transparent 45%);
   mix-blend-mode: screen;
 }
 
-.scanlines {
-  position: fixed;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.1;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.06) 0px,
-    rgba(255, 255, 255, 0.06) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-}
-
-.hero-ui {
+.hero-content {
   position: absolute;
-  top: 16vh;
-  left: 8vw;
-  max-width: 620px;
   z-index: 3;
+  top: 18vh;
+  left: 8vw;
+  max-width: 560px;
 }
-
 .eyebrow {
   font-family: Orbitron, sans-serif;
-  color: var(--neon-cyan);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  letter-spacing: .14em;
+  color: var(--c1);
 }
-
 h1 {
-  margin: 0;
+  margin: .4rem 0 1rem;
   font-family: Orbitron, sans-serif;
-  font-weight: 900;
-  font-size: clamp(2.5rem, 8vw, 6rem);
-  line-height: 0.95;
-  text-shadow: 0 0 22px rgba(77, 226, 255, 0.35);
+  font-size: clamp(2.2rem, 8vw, 5.5rem);
+  line-height: .95;
 }
-
-.sub {
-  margin-top: 1rem;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--muted);
-  line-height: 1.75;
-}
+.hero-content p { color: var(--muted); line-height: 1.7; }
 
 .cta {
   display: inline-block;
-  margin-top: 1.4rem;
-  padding: 0.9rem 1.4rem;
-  border-radius: 999px;
+  margin-top: 1rem;
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
-  box-shadow: 0 0 30px rgba(77, 226, 255, 0.4);
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  padding: .9rem 1.4rem;
+  border-radius: 999px;
 }
 
 .loader {
   position: fixed;
-  right: 4vw;
-  top: 4vh;
-  z-index: 4;
-  font-family: Orbitron, sans-serif;
-  font-size: 0.85rem;
-  color: #c9d9ff;
-  background: rgba(5, 10, 25, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  right: 3vw;
+  top: 3vh;
+  z-index: 5;
+  font-size: .85rem;
+  background: rgba(7,11,30,.65);
+  border: 1px solid rgba(255,255,255,.2);
   border-radius: 10px;
-  padding: 0.5rem 0.8rem;
-  backdrop-filter: blur(6px);
-}
-
-.scroll-hint {
-  position: absolute;
-  left: 8vw;
-  bottom: 20vh;
-  z-index: 3;
-  letter-spacing: 0.2em;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-main {
-  position: relative;
-  z-index: 3;
+  padding: .5rem .8rem;
 }
 
 .section {
-  min-height: 78vh;
+  min-height: 70vh;
   padding: 10vh 8vw;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(10, 14, 32, 0.6), rgba(2, 3, 7, 0.85));
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(10,15,35,.55), rgba(2,3,8,.8));
 }
-
-.section h2,
-.section h3 {
-  font-family: Orbitron, sans-serif;
-}
-
-.section p {
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 72ch;
-}
-
-.split {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.center {
-  text-align: center;
-}
+h2 { font-family: Orbitron, sans-serif; }
