@@ -1,24 +1,30 @@
 :root {
-  --bg: #070b1a;
-  --bg-soft: #0d1430;
-  --text: #edf2ff;
-  --muted: #9dacd8;
-  --accent: #5ae2ff;
-  --accent-2: #a855f7;
+  --bg-1: #04050f;
+  --bg-2: #080d1f;
+  --text: #ecf2ff;
+  --muted: #9eb0d5;
+  --neon-cyan: #4de2ff;
+  --neon-purple: #9b5cff;
+  --neon-pink: #ff5ea8;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
-  font-family: Inter, system-ui, sans-serif;
-  background: linear-gradient(180deg, var(--bg), #04060f 60%);
-  color: var(--text);
+  padding: 0;
   overflow-x: hidden;
+  background: radial-gradient(circle at 50% 10%, #121831 0%, var(--bg-1) 35%, #020307 100%);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
 }
 
 .hero {
-  height: 230vh;
   position: relative;
+  height: 260vh;
 }
 
 #webgl {
@@ -27,75 +33,134 @@ body {
   width: 100%;
   height: 100vh;
   display: block;
+  z-index: 1;
 }
 
-.overlay {
+.fx-overlay {
   position: fixed;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(90, 226, 255, 0.25), transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.22), transparent 38%);
+    radial-gradient(circle at 15% 20%, rgba(77, 226, 255, 0.22), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(155, 92, 255, 0.2), transparent 45%),
+    radial-gradient(circle at 50% 50%, transparent 40%, rgba(255, 94, 168, 0.07) 100%);
   mix-blend-mode: screen;
 }
 
-.hero-content {
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.1;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06) 0px,
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.hero-ui {
   position: absolute;
-  top: 20vh;
+  top: 16vh;
   left: 8vw;
-  max-width: 540px;
+  max-width: 620px;
   z-index: 3;
 }
 
 .eyebrow {
   font-family: Orbitron, sans-serif;
-  color: var(--accent);
-  letter-spacing: 0.12em;
+  color: var(--neon-cyan);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: clamp(2.2rem, 8vw, 5rem);
+  margin: 0;
+  font-family: Orbitron, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 0.95;
-  margin: 0.3rem 0 1rem;
+  text-shadow: 0 0 22px rgba(77, 226, 255, 0.35);
 }
 
-.hero-content p { color: var(--muted); line-height: 1.7; }
+.sub {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--muted);
+  line-height: 1.75;
+}
 
 .cta {
   display: inline-block;
-  margin-top: 1rem;
-  color: white;
-  text-decoration: none;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  margin-top: 1.4rem;
   padding: 0.9rem 1.4rem;
   border-radius: 999px;
+  text-decoration: none;
+  color: white;
   font-weight: 700;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  box-shadow: 0 0 30px rgba(77, 226, 255, 0.4);
 }
 
-.scroll-indicator {
+.loader {
+  position: fixed;
+  right: 4vw;
+  top: 4vh;
+  z-index: 4;
+  font-family: Orbitron, sans-serif;
+  font-size: 0.85rem;
+  color: #c9d9ff;
+  background: rgba(5, 10, 25, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  backdrop-filter: blur(6px);
+}
+
+.scroll-hint {
   position: absolute;
   left: 8vw;
-  bottom: 18vh;
+  bottom: 20vh;
   z-index: 3;
-  color: var(--muted);
-  font-size: 0.85rem;
   letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
-main { position: relative; z-index: 2; }
-.content-section {
-  min-height: 80vh;
+main {
+  position: relative;
+  z-index: 3;
+}
+
+.section {
+  min-height: 78vh;
   padding: 10vh 8vw;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(180deg, rgba(13,20,48,0.5), rgba(4,6,15,0.75));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(10, 14, 32, 0.6), rgba(2, 3, 7, 0.85));
 }
 
-h2, h3 { font-family: Orbitron, sans-serif; }
+.section h2,
+.section h3 {
+  font-family: Orbitron, sans-serif;
+}
+
+.section p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 72ch;
+}
+
 .split {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.outro { text-align: center; }
+.center {
+  text-align: center;
+}
